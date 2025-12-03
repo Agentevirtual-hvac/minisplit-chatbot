@@ -1,78 +1,20 @@
-<!-- force github pages -->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Chatbot Minisplit</title>
-</head>
+<!-- Widget del Chatbot (Google Apps Script) -->
+<div id="widget">
+  <iframe 
+    id="frame"
+    src="https://script.google.com/macros/s/AKfycbx25cVUtFfkdf3UHl5wAfWJ5hoio2FaPCysVXXmE_rMlCOqGhRWSBBwtdhmEb6CKm7p/exec"
+    style="width:100%;height:100%;border:0;border-radius:16px;">
+  </iframe>
+</div>
 
-<body>
-  <h1>FUNCIONA GITHUB PAGES</h1>
-  <p>Si ves este mensaje, el chatbot ya debe aparecer abajo a la derecha.</p>
-
-  <!-- Widget del Chatbot -->
-  <div id="widget">
-    <iframe id="frame" style="width:100%;height:100%;border:0;border-radius:16px;"></iframe>
-  </div>
-
-  <style>
-    #widget {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 380px;
-      height: 520px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      z-index: 99999;
-      border-radius: 16px;
-      overflow: hidden;
-      background: white;
-    }
-  </style>
-
-  <script src="chatbot.js"></script>
-
-  <script>
-  document.getElementById("frame").srcdoc = `
-  <html>
-  <head>
-  <style>
-    body { font-family: Arial; margin: 0; padding: 10px; }
-    #chat { height:430px; overflow-y:auto; border:1px solid #ccc; padding:5px; border-radius:8px; }
-    input { width: 100%; padding: 10px; margin-top:10px; border-radius:8px; border:1px solid #ccc; }
-    .msg-user { background:#eaf2ff; padding:6px; margin:4px 0; border-radius:6px; }
-    .msg-bot { background:#f2f2f2; padding:6px; margin:4px 0; border-radius:6px; }
-  </style>
-  </head>
-
-  <body>
-
-    <div id="chat"></div>
-    <input id="msg" placeholder="Escribe tu pregunta...">
-
-    <script>
-      const chat = document.getElementById("chat");
-      const msg = document.getElementById("msg");
-
-      msg.addEventListener("keypress", async (e)=>{
-          if(e.key === "Enter"){
-              const texto = msg.value;
-              msg.value="";
-              chat.innerHTML += "<div class='msg-user'>"+texto+"</div>";
-              chat.scrollTop = chat.scrollHeight;
-
-              const respuesta = await parent.enviarMensaje(texto);
-              chat.innerHTML += "<div class='msg-bot'>"+respuesta+"</div>";
-              chat.scrollTop = chat.scrollHeight;
-          }
-      });
-    <\/script>
-
-  </body>
-  </html>
-  `;
-  </script>
-
-</body>
-</html>
-
+<style>
+#widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 380px;
+    height: 520px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 99999;
+}
+</style>
